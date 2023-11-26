@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'savon',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'db',  # Название сервиса базы данных в docker-compose.yml
+        'PORT': '3306',
     }
 }
 
@@ -143,7 +147,7 @@ EMAIL_USE_SSL = False
 
 
 # CELERY settings
-CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
