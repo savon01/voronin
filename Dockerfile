@@ -1,19 +1,19 @@
 # Используйте базовый образ Python
+# Base image
 FROM python:3.9
 
-# Установка переменных среды
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Создание рабочей директории в контейнере
+# Set working directory
 WORKDIR /code
 
-# Установка зависимостей Python
+# Copy the entire project
+COPY . .
+
+# Install dependencies
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 
-# Копирование кода приложения в контейнер
-COPY . /code/
+# Expose port
+EXPOSE 8000
 
-# Запуск команды при старте контейнера
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Command to run the server
+CMD python mysite/manage.py runserver 0.0.0.0:8000

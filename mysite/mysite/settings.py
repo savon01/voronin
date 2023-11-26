@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'savon',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'db',  # Название сервиса базы данных в docker-compose.yml
+        'HOST': 'mydatabase',
         'PORT': '3306',
     }
 }
